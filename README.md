@@ -10,8 +10,8 @@ For example, with four blocks, there are four different areas:
 
 ![example for four](./four.png)
 
-Note that although rotating a cuboid may yield a new area, rotating an area does
-not count as a new area. The following areas are not considered different:
+Note that rotating an area does not count as a new area. The following are
+considered the same area:
 
 ![example of rotating](./rotated.png)
 
@@ -34,7 +34,7 @@ The question also supplied a table of the answer for different numbers of cubes:
 
 The answer for six is five. Here they are:
 
-![cuboids from six blocks](six.png)
+![cuboids from six blocks](Six.png)
 
 How do we prove that there are no others? Each area will be `a x b`, where both
 `a` and `b` are factors of 6 (since we are only arranging the blocks). In
@@ -60,8 +60,11 @@ the OEIS.
 
 ## What about a general solution?
 
-What if we want to know the number of solutions for n cubes? Here is a naiive
-algorithm for counting all solutions in python:
+What if we want to know the number of solutions for n cubes? From here we will
+outline the intuition for the problem, but feel free to dash to [the bottom](#formal-proofs) for
+some proofs.
+
+Here is a naiive algorithm for counting all solutions in python:
 
 ```python
 # Assume we have access to factors(n) which iterates the factors of n in
@@ -226,8 +229,7 @@ def countAreas(n):
 # Formal Proofs
 
 We have explained our intuition behind the problem; let's now make some
-statements and prove them. The sequence in the OEIS currently has the terms
-1..10000. If we can prove our findings, lets add some more terms! 
+statements and prove them.
 
 Instead of writing the definition out every time, let the number of distinct
 areas obtained by arranging n unit cubes into a cuboid be A(n). Also, let the
@@ -403,3 +405,6 @@ With these three results, we can see that our algorithm must be correct:
   up n.
 - We combine those prime powers, which we can do since they are all coprime to
   each other.
+
+The sequence in the OEIS currently has the terms 1..10000. Since we have proved
+our findings, lets add some more terms! 
