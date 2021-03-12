@@ -290,4 +290,116 @@ QED.
 For a prime power, n = p<sup>k</sup>, (p prime, k a positive integer) the number
 of square areas, S(n), is given by:
 
-![S(n)]()
+![S(n)](https://render.githubusercontent.com/render/math?math=S(p%5Ek)%20%3D%20%5Cbegin%7Bcases%7D%0A%5Cfrac%7Bk%20%2B%202%7D%7B2%7D%20%26%20%5Ctext%7BIf%20k%20is%20even%7D%20%5C%5C%0A%5Cfrac%7Bk%20%2B%201%7D%7B2%7D%20%26%20%5Ctext%7BIf%20k%20is%20odd%7D%0A%5Cend%7Bcases%7D)
+
+***proof:***
+
+This proof is similar to the proof of [1].
+
+Fix n = p<sup>k</sup> for some prime p and positive integer k. Fix an integer a
+such that 0 ≤ a ≤ k / 2, then the area
+
+> p<sup>a</sup> x p<sup>a</sup>
+
+is a square area, so S(n) is greater than or equal to the number of a that
+satisfy the condition. (1)
+
+Considering the factors of n, (1, p, p<sup>2</sup>, ..., p<sup>k</sup>) any
+square area must be of the form
+
+> p<sup>a</sup> x p<sup>a</sup>
+
+For some integer a with 0 ≤ a and 2a ≤ k (a ≤ k / 2), so S(n) must be less than
+or equal to the number of a that satisfy the original condition as well. (2)
+
+Due to (1) and (2), we know that S(n) is equal to the number of a such that 0 ≤
+a ≤ k / 2.
+
+For odd k, let k = 2m + 1, we have:
+
+![S(p^k) for odd k](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bsplit%7D%0AS(p%5E%7B2m%20%2B%201%7D)%20%26%3D%20%5Csum_%7Ba%3D0%7D%5E%7Bm%7D1%20%5C%5C%0A%26%3D%20m%20%2B%201%20%5C%5C%0A%26%3D%20%5Cfrac%7Bk%20-%201%7D%7B2%7D%20%2B%201%20%5C%5C%0A%26%3D%20%5Cfrac%7Bk%20%2B%201%7D%7B2%7D%0A%5Cend%7Bsplit%7D)
+
+For even k, let k = 2m, we have:
+
+![S(p^k) for even k](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bsplit%7D%0AS(p%5E%7B2m%7D)%20%26%3D%20%5Csum_%7Ba%3D0%7D%5E%7Bm%7D1%20%5C%5C%0A%26%3D%20m%20%2B%201%20%5C%5C%0A%26%3D%20%5Cfrac%7Bk%7D%7B2%7D%20%2B%201%20%5C%5C%0A%26%3D%20%5Cfrac%7Bk%20%2B%202%7D%7B2%7D%0A%5Cend%7Bsplit%7D)
+
+QED.
+
+### Proposition [3]
+
+For coprime integers, a and b with product ab, we can define A(ab) and S(ab) as
+follows:
+
+![A(ab) and S(ab)](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bsplit%7D%0AA(ab)%20%26%3D%20A(a)A(b)%20%2B%20(A(a)%20-%20S(a))(A(b)%20-%20S(b))%20%5C%5C%0AS(ab)%20%26%3D%20S(a)S(b)%0A%5Cend%7Bsplit%7D)
+
+***proof:***
+
+There are several parts to this proof, lets start with first showing S(ab) =
+S(a)S(b).
+
+Let l<sub>ab</sub> x l<sub>ab</sub> be a square area obtained from arranging ab
+cubes. Define l<sub>a</sub>, and l<sub>b</sub> as GCD(l<sub>ab</sub>, a), and
+GCD(l<sub>ab</sub>, b) respectively. (GCD is the greatest common divisor) By the
+nature of the GCD, we know that l<sub>a</sub> is a factor of a, l<sub>b</sub> is
+a factor of b, and since a and b are coprime, l<sub>a</sub>l<sub>b</sub> =
+l<sub>ab</sub>. Therefore S(ab) ≤ S(a)S(b). (1)
+
+Fix a square area, l<sub>a</sub> x l<sub>a</sub>, obtained by arranging a cubes
+and another square area, l<sub>b</sub> x l<sub>b</sub> obtained by arranging b
+cubes. Define l<sub>ab</sub> = l<sub>a</sub>l<sub>b</sub>. Since l<sub>a</sub>
+is a factor of a and l<sub>b</sub> is a factor of b l<sub>ab</sub> must be a
+factor of ab. Therefore S(ab) ≥ S(a)S(b). (2)
+
+Due to (1) and (2), S(ab) = S(a)S(b).
+
+Let l<sub>a</sub> x w<sub>a</sub> be an area obtained by arranging a blocks and
+also let l<sub>b</sub> x w<sub>b</sub> be an area obtained by arranging b
+blocks. If either l<sub>a</sub> = w<sub>a</sub> or l<sub>b</sub> =
+w<sub>b</sub>, there is only one distinct area:
+
+> l<sub>a</sub>l<sub>b</sub> x w<sub>a</sub>w<sub>b</sub>
+
+However, if both l<sub>a</sub> ≠ w<sub>a</sub> and l<sub>b</sub> ≠
+w<sub>b</sub>, then there are two distinct areas:
+
+> l<sub>a</sub>l<sub>b</sub> x w<sub>a</sub>w<sub>b</sub>
+
+and 
+
+> l<sub>a</sub>w<sub>b</sub> x w<sub>a</sub>l<sub>b</sub>
+
+The number of areas with l<sub>a</sub> ≠ w<sub>a</sub> and l<sub>b</sub> ≠
+w<sub>b</sub> is (A(a) - S(a))(A(b) - S(b)). Therefore, A(ab) ≥ A(a)A(b) + (A(a)
+\- S(a))(A(b) - S(b)). (We skipped some checks about whether
+l<sub>a</sub>l<sub>b</sub> would be factors of ab etc, but that all comes out of
+a and b being coprime and l<sub>a</sub> and l<sub>b</sub> being factors of a and
+b respectively)
+
+Fix an area, l<sub>ab</sub> x w<sub>ab</sub>, obtained by arranging ab cubes.
+Similarly to before, let l<sub>a</sub> = GCD(l<sub>ab</sub>, a), l<sub>b</sub> =
+GCD(l<sub>ab</sub>, b), w<sub>a</sub> = GCD(w<sub>ab</sub>, a), and
+w<sub>b</sub> = GCD(w<sub>ab</sub>, b). We must have 
+
+> l<sub>a</sub> x w<sub>a</sub>
+
+An area obtainable by arranging a cubes and
+
+> l<sub>b</sub> x w<sub>b</sub>
+
+an area obtainable by arranging b cubes. By counting the number of ways to
+obtain these areas, and removing those that we will double count, we get:
+
+![Inequality for A(ab) in the other direction](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bsplit%7D%0AA(ab)%20%26%5Cleq%202A(a)A(b)%20-%20A(a)S(b)%20-%20A(b)S(a)%20%2B%20S(a)S(b)%20%5C%5C%0A%26%3D%20A(a)A(b)%20%2B%20(A(a)%20-%20S(a))(A(b)%20-%20S(b))%0A%5Cend%7Bsplit%7D)
+
+Therefore A(ab) = A(a)A(b) + (A(a) - S(a))(A(b) - S(b)).
+
+QED.
+
+With these three results, we can see that our algorithm must be correct:
+
+- We split our number up into its prime factors and calculate their
+  multiplicities, k.
+- We then calculate the totals for each of the individual prime powers that make
+  up n.
+- We combine those prime powers, which we can do since they are all coprime to
+  each other.
